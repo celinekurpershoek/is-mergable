@@ -1,17 +1,17 @@
 name: Check if mergable
 on:
-  push
+  pull_request
 
 jobs: 
   job:
     name: Check
     runs-on: ubuntu-latest
     steps:
-      - run: echo ::set-output name=result::$(echo "$GITHUB_REF" | awk -F / '{print $3}')
-        id: getPullNumber
-        shell: bash
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Run check
-        uses: celinekurpershoek/is-mergable@master
+        uses: './'
         with:  
           repo: ${{ github.repository }}
-          pullNumber: ${{ steps.getPullNumber.outputs.result }}
+          pullNumber: ${{ github.event.pull_request.number }}
+        

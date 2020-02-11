@@ -5,10 +5,10 @@ branding:
   icon: 'message-circle'
   color: 'green'
 inputs: 
-  message:
+  repo:
     description: 'Github repository name (automatically created by Github)'
     required: true
-  GITHUB_TOKEN:
+  pullNumber:
     description: 'Github pullrequest number (automatically created by Github)'
     required: true
 outputs:
@@ -19,4 +19,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.repo }}
-    - ${{ inputs.pullNo }}
+    - ${{ inputs.pullNumber }}
