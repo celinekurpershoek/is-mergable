@@ -16,5 +16,5 @@ jobs:
         uses: celinekurpershoek/is-mergable@master
         with:  
           repo: ${{ github.repository }}
-          pullNumber: ${{ steps.prNumber.outputs.result }}
+          pullNumber: ${{ github.event.pull_request.number }}
         
