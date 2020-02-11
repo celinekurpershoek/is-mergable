@@ -11,7 +11,6 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         id: prNumber
-        type: bash
         run: echo ::set-output name=result::$PR_NUMBER
       - name: Run check
         uses: celinekurpershoek/is-mergable@master
