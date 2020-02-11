@@ -5,6 +5,7 @@ NC='\033[0m' # No Color
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
+echo "$@"
 # Add username/repository as $1 and pullrequest number as $2
 URL="https://api.github.com/repos/$1/pulls/$2"
 STATUSCODE=$(curl -sL -w "%{http_code}" -I "$URL" -o /dev/null)
