@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run check
-        uses: './action'
         with:  
           repo: ${{ github.repository }}
           pullNumber: ${{ github.event.pull_request.number }}
