@@ -7,15 +7,9 @@ jobs:
     name: Check
     runs-on: ubuntu-latest
     steps:
-      - name: Get PR number
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        id: prNumber
-        run: echo ::set-output name=result::$PR_NUMBER
       - name: Run check
-        uses: celinekurpershoek/is-mergable@fix/is-mergeable
+        uses: './github/workflows/mergeable'
         with:  
           repo: ${{ github.repository }}
           pullNumber: ${{ github.event.pull_request.number }}
-          prNumber: ${{ steps.prNumber.outputs.result }}
         
