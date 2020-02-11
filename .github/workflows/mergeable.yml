@@ -9,7 +9,10 @@ jobs:
     steps:
       - name: Run check
         uses: celinekurpershoek/is-mergable@master
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: echo "The PR number is $PR_NUMBER"
         with:  
           repo: ${{ github.repository }}
-          pullNumber: ${{ github.number }}
+          pullNumber: ${{ github.event.pull_request.number }}
         
