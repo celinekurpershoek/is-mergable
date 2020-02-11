@@ -10,10 +10,11 @@ jobs:
       - name: Get PR number
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: echo "The PR number is $PR_NUMBER"
+        id: prNumber
+        run: echo ::set-output name=result::$PR_NUMBER
       - name: Run check
         uses: celinekurpershoek/is-mergable@master
         with:  
           repo: ${{ github.repository }}
-          pullNumber: ${{ github.event.pull_request.number }}
+          pullNumber: ${{ steps.prNumber.outputs.result }}
         
