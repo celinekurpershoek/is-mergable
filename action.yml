@@ -1,0 +1,22 @@
+name: 'Is mergeable'
+description: 'Check if current pull request is mergeable'
+author: 'Celine Kurpershoek'
+branding: 
+  icon: 'message-circle'
+  color: 'green'
+inputs: 
+  message:
+    description: 'Github repository name (automatically created by Github)'
+    required: true
+  GITHUB_TOKEN:
+    description: 'Github pullrequest number (automatically created by Github)'
+    required: true
+outputs:
+  result: # id of output
+    description: 'Is this PR mergeable > boolean'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo }}
+    - ${{ inputs.pullNo }}
