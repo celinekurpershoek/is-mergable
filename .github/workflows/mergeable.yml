@@ -7,9 +7,11 @@ jobs:
     name: Check
     runs-on: ubuntu-latest
     steps:
+      - run:   echo echo ::set-output name=result::$(echo "$GITHUB_REF" | awk -F / '{print $3}')
+        id: getPullNumber
+        shell: bash
       - name: Run check
         uses: celinekurpershoek/is-mergable@master
         with:  
           repo: ${{ github.repository }}
-          pullNumber: ${{ github.event.pull_request.number }}
-        
+          pullNumber: ${{ steps.getPullNumber.outputs.result }}
